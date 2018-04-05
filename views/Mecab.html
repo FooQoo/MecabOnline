@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang=ja>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- link rel="stylesheet" href="./bootstrap_extend.css"-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <title>形態素解析 Online</title>
+</head>
+<body>
+
+  <!-- Grey with black text -->
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark px-xl-5">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/形態素解析">形態素解析</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">History</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container pt-xl-5">
+
+    <div class="jumbotron">
+      <h1>形態素解析 Online</h1>
+      <p>オンラインで形態素解析ができるサイト</p>
+    </div>
+
+    <div class="container">
+      <h3>How to use</h3>
+      <ul>
+        <li>下記のフォームに文書を入力</li>
+        <li>Historyでこれまで調べられた履歴が確認できます</li>
+      </ul>
+    </div>
+
+    <div >
+
+    </div>
+
+    <form action="/形態素解析" method="POST">
+
+      <div class="container form-group">
+        <label for="txt">txt:</label>
+        <textarea class="form-control" rows="5" id="txt" name="txt"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Analyze</button>
+      </div>
+
+    </form>
+
+    <div class="container pb-xl-5">
+      {% for morph in morphs %}
+      {{ morph }}<br />
+      {% endfor %}
+    </div>
+  </div>
+
+</body>
+</html>
