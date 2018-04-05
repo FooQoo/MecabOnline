@@ -8,3 +8,6 @@ OnlineでMecabができるWebアプリ(仮)
 - 非同期通信を用いたanalyze
 - csvのダウンロード
 - 履歴の追加(全体,個人)
+
+### Next
+analyze resultのgrid化および，オートスクロール
