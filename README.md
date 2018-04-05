@@ -5,9 +5,9 @@ OnlineでMecabができるWebアプリ(仮)
 ./bin/install-mecab-ipadic-neologd -n
 
 ### Todo
-- 非同期通信を用いたanalyze
+- 非同期通信を用いたanalysis
 - csvのダウンロード
 - 履歴の追加(全体,個人)
 
 ### Next
-analyze resultのgrid化および，オートスクロール
+analyze resultのgrid化およびオートスクロール
