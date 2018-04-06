@@ -8,6 +8,6 @@ RUN apk add git
 WORKDIR /web
 RUN git clone git@github.com:FooQoo/Morphological-analysis-Online.git Morphological-analysis
 
-# flaskアプリケーションの起動
+# bottleアプリケーションの起動
 ENV BOTTLE_APP /web/Morphological-analysis/index.py
 CMD python BOTTLE_APP
