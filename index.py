@@ -23,4 +23,4 @@ def index():
     return template('table',morphs=morphs)
 
 if __name__ == "__main__":
-    run(app=app,host="0.0.0.0",port='8080',reloader=True)
+    run(app=app,host="0.0.0.0",port=int(os.environ.get("PORT",5000)),reloader=True)
