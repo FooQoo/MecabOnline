@@ -11,3 +11,6 @@ OnlineでMecabができるWebアプリ(仮)
 
 ### Next
 analyze resultのgrid化およびオートスクロール
+
+### refered
+[myenigma](http://myenigma.hatenablog.com)

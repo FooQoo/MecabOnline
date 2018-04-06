@@ -73,6 +73,9 @@ $(function(){
     <h3>How to use</h3>
     <ul>
       <li>下記のフォームに文書を入力</li>
+      <li>Analyzeで形態素解析</li>
+      <li>Resetで解析結果のリセット</li>
+    </ul>
     </ul>
   </div>
 
