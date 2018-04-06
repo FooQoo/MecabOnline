@@ -2,18 +2,77 @@
 
 {% block content %}
 
-<div class="container pt-xl-5">
+<script type="text/javascript">
+
+$(function(){
+    // Ajax button click
+    $('#submit').on('click',function(){
+        $.ajax({
+            url:'/形態素解析',
+            type:'POST',
+            data:{
+                'txt':$('#txt').val()
+            }
+        })
+        // Ajaxリクエストが成功した時発動
+        .done( (table) => {
+            $('#table').html(table);
+            $("html,body").animate({scrollTop:$('form').offset().top - $('#content').offset().top});
+            console.log(tabel);
+        })
+        // Ajaxリクエストが失敗した時発動
+        .fail( (table) => {
+            $('#table').html(table);
+            $("html,body").animate({scrollTop:$('form').offset().top - $('#content').offset().top});
+            console.log(table);
+        })
+        // Ajaxリクエストが成功・失敗どちらでも発動
+        .always( (txt) => {
+
+        });
+    });
+    $('#reset').on('click',function(){
+        $.ajax({
+          url:'/形態素解析',
+          type:'GET',
+          data:{
+              'txt':''
+          }
+        })
+        // Ajaxリクエストが成功した時発動
+        .done( (table) => {
+          $('#table').html('');
+          $('#txt').val('');
+          $("html,body").animate({scrollTop:0});
+          console.log(tabel);
+        })
+        // Ajaxリクエストが失敗した時発動
+        .fail( (table) => {
+          $('#table').html('');
+          $('#txt').val('');
+          $("html,body").animate({scrollTop:0});
+          console.log(tabel);
+        })
+        // Ajaxリクエストが成功・失敗どちらでも発動
+        .always( (txt) => {
+
+        });
+    });
+});
+
+</script>
+
+<div id="content" class="container pt-xl-4">
 
   <div class="jumbotron">
-    <h1 class="display-2">形態素解析 Online</h1>
-    <h2>オンラインで形態素解析ができるサイト</p>
+    <h1 class="display-3">形態素解析 Online</h1>
+    <h4 style="color: dark !important;">オンラインで形態素解析ができるサイト</h4>
   </div>
 
   <div class="container">
     <h3>How to use</h3>
     <ul>
       <li>下記のフォームに文書を入力</li>
-      <li>Historyでこれまで調べられた履歴が確認できます</li>
     </ul>
   </div>
 
@@ -24,36 +83,12 @@
       <textarea class="form-control" rows="5" id="txt" name="txt">{{txt}}</textarea>
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Analyze</button>
+      <button id="submit" type="button" class="btn btn-primary">Analyze</button>
+      <button id="reset"  type="button" class="btn btn-primary">Reset</button>
     </div>
 
   </form>
 
-  <div id='tbl' class="container pb-xl-5 h5 small" style="visibility: {{'hidden' if morphs|length == 0 else 'visible'}};">
-    <table class="table table-bordered table-fixed">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">表層形</th>
-        <th scope="col">品詞</th>
-        <th scope="col">品詞細分類1</th>
-        <th scope="col">品詞細分類2</th>
-        <th scope="col">品詞細分類3</th>
-        <th scope="col">活用型</th>
-        <th scope="col">活用形</th>
-        <th scope="col">原形</th>
-        <th scope="col">読み</th>
-        <th scope="col">発音</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for (term,morph) in morphs %}<tr>
-      <th scope="row">{{ term }}</th>
-      {% for m in morph %}
-      <th scope="col">{{ m }}</th>
-      {% endfor %}</tr>
-      {% endfor %}
-    </tbody>
-    </table>
-  </div>
-</div>
+  <div id="table" class="container pb-xl-5 h5 small"></div>
+
 {% endblock %}
